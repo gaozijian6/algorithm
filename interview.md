@@ -50,3 +50,42 @@ opacity 0：执行完整流程
 
 ### 页面中多个计时器，怎么避免页面卡顿：
 1、看不见的不运行 2、使用requestAnimationFrame  3、定时器放在Web Workers
+
+### http状态码：
+200：成功
+304：资源未修改
+401：未登录
+403：登录了但未授权
+404：找不到资源
+500：服务器内部错误
+504：服务器响应超时
+
+### js数据类型：
+基本数据类型：number、string、boolean、null、undefined、symbol、bigint
+引用数据类型：Object
+
+### 类型检测：
+typeof     null和引用数据类型均会被检测未Object
+instanceof   只能检测引用数据类型，当前以及祖先类型都会返回true
+constructor  只能检测当前类型，检测基本类型js会自动包装也可以检测，但无法检测null和undefined
+Object.prototype.toString.call()  可检测任何类型
+
+### 0.1+0.2!==0.3：
+计算机的位数无法精确表示0.1和0.2，(0.1*10 + 0.2*10) / 10 == 0.3 // true
+
+### css选择器优先级：
+!important  内联  ID  （类、伪类、属性）  元素  通用（*、>,+,~）
+判定优先级，先看css内部的样式是否相同，相同的话再看前面的选择器优先级是否相同，再相同的话才看书写的先后顺序
+注意：如果伪类事件没有被触发是不会参与优先级比较
+
+### 跨域方式：
+1、CORS  2、JSONP  3、代理服务器  4、postMessage  5、WebSocket
+
+### 同源策略：
+协议、域名、端口号全部相同就是同源
+
+### 本地存储：
+1、localStorage：大小在5MB作用，遵守同源策略，只能存储字符串类型，数据永久保存
+2、sessionStorage：与localStorage类似，只不过关闭页签数据就会丢失
+3、Cookies：大小在4KB左右，可以设置过期时间与安全属性，会随着http请求自动发送服务器
+4、IndexedDB
