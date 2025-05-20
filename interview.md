@@ -89,3 +89,22 @@ Object.prototype.toString.call()  可检测任何类型
 2、sessionStorage：与localStorage类似，只不过关闭页签数据就会丢失
 3、Cookies：大小在4KB左右，可以设置过期时间与安全属性，会随着http请求自动发送服务器
 4、IndexedDB
+
+### cookies的安全属性：
+expires：到期时间
+max-age：有效期
+Domain：指定哪些域名可以访问cookie
+samesite：strict不允许跨站请求   lax允许部分跨站请求   none允许任何跨站请求
+secure：只能通过https传输
+httponly：不能通过document.cookie访问
+
+### js事件流：
+描述了页面中元素接受事件的顺序，分为三个阶段：
+捕获阶段：从根元素沿着dom到目标元素
+目标阶段：已经达到目标元素
+冒泡阶段：从目标元素沿dom传到根元素
+addEventListener默认是在冒泡阶段执行，将第三个参数设置为true可以在捕获阶段执行，stopPropagation可以阻止事件传播
+
+前端安全：
+XSS攻击：1、反射性：攻击者构造恶意url群发用户，用户点击后将敏感信息泄露   2、存储型：攻击者通过留言板等功能将恶意代码片段存到数据库里，别的用户在加载具有这段留言时浏览器会自动执行恶意代码    3、DOM型：和反射型很像，就是不经过服务器
+现代浏览器一般不会执行innerHTML里的script但是img可以
