@@ -8,10 +8,10 @@ function addTwoNumbers(l1, l2) {
     let current = dummyHead;
     let carry = 0;
     
-    while (l1 !== null || l2 !== null || carry !== 0) {
+    while (l1 || l2 || carry) {
         // 获取当前位的值
-        let val1 = l1 !== null ? l1.val : 0;
-        let val2 = l2 !== null ? l2.val : 0;
+        let val1 = l1 ? l1.val : 0;
+        let val2 = l2 ? l2.val : 0;
         
         // 计算当前位的和
         let sum = val1 + val2 + carry;
@@ -24,8 +24,8 @@ function addTwoNumbers(l1, l2) {
         current = current.next;
         
         // 移动到下一位
-        if (l1 !== null) l1 = l1.next;
-        if (l2 !== null) l2 = l2.next;
+         l1 = l1?.next;
+         l2 = l2?.next;
     }
     
     return dummyHead.next;
