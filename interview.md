@@ -1,21 +1,47 @@
 ### 数组api：
 实例：push pop unshift shift length includes sort forEach map reduce
-filter find findIndex indexOf lastIndexOf slice splice concat join some every fill
+filter find findIndex indexOf lastIndexOf slice splice concat join some every fill reverse flat
 静态：isArray from of
 
-### react常用hook：
-useState useRef useEffect useCallback useMemo useReducer useContext useLayoutEffect
+### react的hook：
+useState useRef useEffect useLayoutEffect useCallback useMemo useReducer useContext 
 
 ### vue常用hook：
 beforeCreate created beforeMount mounted beferUpdate updated beforeDestroy destroyed
+beforeCreate：完成实例初始化，没有数据观测和虚拟dom
+created：数据观测完成，可以访问data、computed等方法，虚拟dom完成
+mounted：真实dom渲染完成
+Vue 3 中 setup 函数执行时机确实代替了 beforeCreate 和 created
 
 ### vue常用api：
 ref reactive computed watch watchEffect defineProps defineEmits v-model nextTick
 
+usememo和computed都是只有被访问了才计算一次，计算后的结果被缓存，后续再被访问直接走缓存
+
+### Vue 2 中更新引用数据类型来触发渲染：
+1.替换整个对象
+2.Vue.set
+
 ### 前端性能优化：
-1.优化算法 2.图片压缩 3.react里的usememo、memo、usecallback 4.vue使用computed、keep-alive 5、代码压缩混淆
-6、服务端渲染 7、数据预加载、懒加载、按需加载 8、骨架屏 9、更换构建工具 10、flatlist 11、http缓存 12、CDN 13、编译器优化
-14、不写内联样式 15、条件渲染 display：none visibility：hidden合理使用  16、zustand单个读取
+1.优化算法 
+2.react里的usememo、memo、usecallback 
+3.vue使用computed、keep-alive 
+4、不写内联样式  
+5、使用开销小的组件 
+6、zustand单个读取  
+7.防抖和节流
+8、数据预加载、懒加载、按需加载 
+9.图片压缩 
+10、骨架屏 
+11、代码压缩混淆
+12、编译器优化
+13、更换构建工具 
+14、http缓存 
+15、CDN 
+16、服务端渲染 
+17、cpu密集任务开多线程、调用原生、使用WASM技术
+18、合理使用script标签进行加载
+
 
 ### http缓存
 强缓存：  
@@ -54,6 +80,7 @@ opacity 0：执行完整流程
 ### http状态码：
 200：成功
 304：资源未修改
+400：服务器无法理解请求，请求可是有误
 401：未登录
 403：登录了但未授权
 404：找不到资源
@@ -66,8 +93,8 @@ opacity 0：执行完整流程
 
 ### 类型检测：
 typeof     null和引用数据类型均会被检测未Object
-instanceof   只能检测引用数据类型，当前以及祖先类型都会返回true
-constructor  只能检测当前类型，检测基本类型js会自动包装也可以检测，但无法检测null和undefined
+instanceof   只能检测引用数据类型，当前以及祖先类型都会返回true（检测对象的原型链上是否存在构造函数的prototype）
+constructor  只能检测当前类型，检测基本类型js会自动包装也可以检测，但无法检测null和undefined（检测对象收否由某个构造函数创建）
 Object.prototype.toString.call()  可检测任何类型
 
 ### 0.1+0.2!==0.3：
@@ -108,3 +135,87 @@ addEventListener默认是在冒泡阶段执行，将第三个参数设置为true
 前端安全：
 XSS攻击：1、反射性：攻击者构造恶意url群发用户，用户点击后将敏感信息泄露   2、存储型：攻击者通过留言板等功能将恶意代码片段存到数据库里，别的用户在加载具有这段留言时浏览器会自动执行恶意代码    3、DOM型：和反射型很像，就是不经过服务器
 现代浏览器一般不会执行innerHTML里的script但是img可以
+
+### 继承
+原型链继承  构造函数继承   组合继承   class继承
+
+### 解析html过程：
+浏览器对文件从上到下扫描，通过词法分析和语法分析创建dom节点，中途遇到script标签（四种情况）进行相应情形处理，css文件的下载不会阻塞html解析单会阻塞页面渲染
+
+### display属性
+1.inline：不独占一行，不能设置宽高，内容决定大小，只能设置水平方向的margin、padding
+2.inline-block：不独占一行，可以设置宽高，可设置所有方向的margin、padding
+3.block：独占一行，可以设置宽高，可以设置所有方向的margin、padding
+4.none：有dom但是不渲染不占位
+5.flex：
+父元素可设置justify-content：flex-start、center、flex-end、space-between（两端对齐，中间间距相同）align-items同理、align-content是多轴线对齐也是同理、space-around（两侧间距是中间间距的一半）、space-evenly（两侧和中间的间距相同）。flex-direction：row、row-reverse、coloum、column-reverse。flex-wrap：nowrap、wrap  
+子元素可设置order默认是0，数值越小排名越靠前。flex-grow默认值是0，当父亲元素没有填满时，所有子元素根据值自动分配比例放缩。flex-shrink同理缩小。flex本身设置值：其他内容宽度、指定宽度分配完后，会自动根据flex比例分配剩余宽度，如果没有剩余空间，会根据某种策略压缩空间
+6.grid：
+父元素可设置grid-template-rows、grid-template-colums对行和列进行布局，可以用repeat，第一个参数是数量，第二个参数可以是固定单位也可以是fr，fr就是比例分配，也可以不写repeat。父元素设置grid-template-areas，子元素要搭配grid-area来使用，可以清晰分配网格
+
+### this指向：
+浏览器里的this指向window
+node环境里指向的是全局对象
+普通函数里的this指向它直接调用者
+箭头函数this继承外层作用域里的this
+通过new的构造函数里的this指向实例本身
+
+### call、apply、bind区别：
+三个的第一个参数都是要绑定的this值，call和apply后面的参数只是传参形式不一样，bind只是绑定this对象但不会立即执行
+
+### new的过程：
+1.创建新对象
+2.将新对象的原型指向构造函数的ptototype
+3.将构造函数里的this绑定到新对象上，然后执行构造函数里的代码
+4.判断构造函数里的返回值，如果是新对象就返回这个对象，否则就返回之前创建的新对象
+
+this易混淆点：
+1.显式赋值更换函数
+2.隐式赋值更换函数（向一个函数里传回调函数、函数里return另一个函数）
+3.返回新对象的new
+4.定时器里的普通函数的this，但要注意箭头函数
+5.监听事件里的普通函数this指向被监听对象，箭头函数this和定时器类似
+
+### DNS解析流程：
+拿到域名后先查浏览器的本地缓存，再查本地DNS服务器，然后递归查询根域名服务器、顶级域名服务器、权威域名服务器
+
+### udp和tcp使用场景：
+tcp：文件传输、远程登陆等
+udp：流媒体传输
+
+### http和https区别：
+http：明文传输，端口号80
+https：除三次握手外还有加密步骤，SEO好
+
+### ES6:
+1.let const 块级作用域
+2.模板字符串
+3.解构赋值
+4.对象字面量简写
+5.箭头函数
+6.默认参数
+7.剩余参数
+8.扩展运算符
+9.Class类
+10.Promise
+11.模块系统
+12.Map、Set
+13.数组和字符串的一些新方法
+
+### Promise
+1.用来解决回调地狱，三种状态：进行中、成功、失败，成功走then，失败走catch，不管成功和失败finally都会执行，可以链式调用，失败的话会有链式穿透
+2.静态方法：
+Promise.all()：接受一个数组，当里面所有都成功才会走then，只要有一个失败了就会走catch
+Promise.race()：谁最快就根据成功或失败走相应then或catch
+Promise.resolve()、Promise.reject()
+
+### 前端通信
+1.localStorage
+2.postMessage
+3.sharedWorker
+4.WebRTC
+5.websocket（需要服务器）
+
+
+### 原型链：
+每个对象都有一个__proto__属性指向其原型对象，原型对象也通过__proto__指向它的原型对象，这样一直向上查找，直到Object.prototype，而Object.prototype.__proto__为null

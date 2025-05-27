@@ -1,0 +1,6 @@
+### webpack:
+webpack是一个现代js的静态打包器，他会递归的构建依赖关系图，将项目中所需的模块打包成一个或多个bundle。
+入口（entry）：告诉webpack从哪个文件开始构建依赖图，默认是src/index.js
+输出（output）：告诉webpack将打包后的文件输出到哪里，默认是dist/index.js
+加载器（loader）：webpack本身只能理解js和json文件，加载器让webpack能处理其他类型的文件
+插件（plugin）：
