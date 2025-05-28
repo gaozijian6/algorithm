@@ -4,3 +4,7 @@ webpack是一个现代js的静态打包器，他会递归的构建依赖关系�
 输出（output）：告诉webpack将打包后的文件输出到哪里，默认是dist/index.js
 加载器（loader）：webpack本身只能理解js和json文件，加载器让webpack能处理其他类型的文件
 插件（plugin）：
+optimization：{
+minimize：true //开启代码压缩
+}
+副作用：打印语句、导入整个文件、window挂属性、操作dom、原型链修改、本地存储操作、网络请求等
