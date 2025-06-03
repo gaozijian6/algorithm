@@ -8,3 +8,18 @@ optimization：{
 minimize：true //开启代码压缩
 }
 副作用：打印语句、导入整个文件、window挂属性、操作dom、原型链修改、本地存储操作、网络请求等
+
+### antd常用组件：
+Form、Form.item、Input、Select、Option、Card、Form.List、DatePicker、Table、Message、Modal、Drawer、Tabs、Spin、Steps、Upload、Row、Col、各种Icon、Button
+
+Form：form、layout、initialValues、labelCol、wrapperCol、onFinish、onFinishFailed
+Form.item：name、label
+
+Input：placeholder、allowclear、maxlength、showcount、defaultValue、value、disabled、readOnly、onChange、onFocus、onBlur、onPressEnter
+
+Select：placeholder、options、mode、onChange、showsearch、allowclear、filterOption、defaultValue、value、disabled
+
+Option：key、value、label
+
+Spin：spining
+
