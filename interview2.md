@@ -10,3 +10,22 @@ ts-loader：专门的ts转换，相比babel-loader在构建时能做额外的类
 
 ### vite：
 下一代的构建工具，启动速度很快，基于ESM的冷启动，按需编译，利用浏览器缓存策略，开发环境是esbuild在转换，生产环境使用Rollup打包
+optimization：{
+minimize：true //开启代码压缩
+}
+副作用：打印语句、导入整个文件、window挂属性、操作dom、原型链修改、本地存储操作、网络请求等
+
+### antd常用组件：
+Form、Form.item、Input、Select、Option、Card、Form.List、DatePicker、Table、Message、Modal、Drawer、Tabs、Spin、Steps、Upload、Row、Col、各种Icon、Button
+
+Form：form、layout、initialValues、labelCol、wrapperCol、onFinish、onFinishFailed
+Form.item：name、label
+
+Input：placeholder、allowclear、maxlength、showcount、defaultValue、value、disabled、readOnly、onChange、onFocus、onBlur、onPressEnter
+
+Select：placeholder、options、mode、onChange、showsearch、allowclear、filterOption、defaultValue、value、disabled
+
+Option：key、value、label
+
+Spin：spining
+
