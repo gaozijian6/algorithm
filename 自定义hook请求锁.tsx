@@ -13,26 +13,27 @@ function App() {
           return;
         }
 
-        try {
-          lockRef.current = true;
-          setLoading(true);
-          const result = await requestFn(...args);
-          return result;
-        } finally {
+        lockRef.current = true;
+        setLoading(true);
+
+        return requestFn(...args).finally(() => {
           lockRef.current = false;
           setLoading(false);
-        }
+        });
       },
       [requestFn]
     );
 
     return { loading, execute };
   }
+
   async function request() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return axios.post("http://127.0.0.1:3000/api/v1/test");
   }
+
   const { loading, execute } = useRequestLock(request);
+
   return (
     <div>
       <Button onClick={() => execute()} loading={loading}>

@@ -43,3 +43,28 @@ datePicker：placeholder、onChange、showtime、defaultValue
 table：datasource、columns、columns里的render和sorter、可以选择是否分页、边框，rowSelection
 
 tabs：items属性接受一个数组
+
+### vue点击事件链式调用：
+.stop：阻止冒泡
+.prevent：阻止默认行为
+.self：只有点击自己式才触发
+.once：触发一次后就会移除监听
+.capture：捕获的时候触发
+.passive：不使用的话浏览器先执行逻辑代码再检查是否阻止默认行为，反之，浏览器会同时执行默认行为和逻辑代码
+
+### css可继承和不可继承的属性：
+可继承：文字相关属性
+不可继承：盒模型、背景相关、定位相关
+可以通过inherit继承
+
+### css单位：px、vw、vh、em、rem、%
+
+### BOM常见对象：
+window：
+screen：
+document：
+console：
+定时器：
+alert：
+location：assign、href、replace、reload
+History：

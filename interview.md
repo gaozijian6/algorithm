@@ -219,3 +219,10 @@ Promise.resolve()、Promise.reject()
 
 ### 原型链：
 每个对象都有一个__proto__属性指向其原型对象，原型对象也通过__proto__指向它的原型对象，这样一直向上查找，直到Object.prototype，而Object.prototype.__proto__为null
+
+### position的值：
+static：上下作用、zindex都不生效
+relative：相对于元素正常位置定位
+absolute：根据祖先第一个使用relative的元素定位，脱离文档流
+fixed：相对于浏览器窗口定位，脱离文档流
+sticky：
